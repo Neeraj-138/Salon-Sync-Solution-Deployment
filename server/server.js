@@ -21,7 +21,7 @@ const app=express();
 
 
 app.use(bodyParser.json());
-const allowedOrigins = ['http://localhost:3000', 'http://localhost:3001'];
+const allowedOrigins = ['salon-sync-solution-deployment.vercel.app', 'http://localhost:3001'];
 
 app.use(cors({
     origin: allowedOrigins,
@@ -31,7 +31,8 @@ app.use(cors({
 export const instance =new Razorpay({
     key_id:process.env.key_id,
     // key_id:'rzp_test_q4hhrH5FZ0PawV',
-    key_secret:'3e5bbtJ0DxUCXTYBUb535PpF',
+    // key_secret:'3e5bbtJ0DxUCXTYBUb535PpF',
+    key_secret:process.env.key_secret
 })
 app.use(cookieParser());
 app.use(express.json());
@@ -55,6 +56,6 @@ app.use('/api/booking',bookingRoutes);
 app.use('/api/payment',paymentRoute);
 // app.use('/uploads', express.static(path.join(__dirname,'uploads')));
 app.use('/uploads', express.static('uploads'));
-app.listen(7000,()=>{
+app.listen(process.env.BACKEND_PORT,()=>{
     console.log("Server listening at port 7000")
 })
