@@ -29,10 +29,10 @@ app.use(cors({
 }));
 
 export const instance =new Razorpay({
-    key_id:process.env.key_id,
+    key_id:process.env.KEY_ID,
     // key_id:'rzp_test_q4hhrH5FZ0PawV',
     // key_secret:'3e5bbtJ0DxUCXTYBUb535PpF',
-    key_secret:process.env.key_secret
+    key_secret:process.env.KEY_SECRET
 })
 app.use(cookieParser());
 app.use(express.json());
