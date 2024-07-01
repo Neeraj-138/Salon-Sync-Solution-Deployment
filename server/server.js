@@ -57,5 +57,5 @@ app.use('/api/payment',paymentRoute);
 // app.use('/uploads', express.static(path.join(__dirname,'uploads')));
 app.use('/uploads', express.static('uploads'));
 app.listen(process.env.BACKEND_PORT,()=>{
-    console.log("Server listening at port 7000")
+    console.log("Server listening at port ",process.env.BACKEND_PORT)
 })
