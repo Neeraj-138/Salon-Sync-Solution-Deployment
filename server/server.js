@@ -39,6 +39,13 @@ app.use(express.urlencoded({ extended: true }))
 // headers: {
 //     'Content-Type': 'application/json'
 // }
+
+app.get('/',(req,res,next)=>{
+    return res.status(200).json({
+        status:true,
+        message:"Hello World"
+    })
+})
 app.use('/api/auth',authRoutes);
 app.use('/api/admin',adminRoutes);
 app.use('/api/user',userRoutes);
