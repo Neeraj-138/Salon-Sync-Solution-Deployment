@@ -37,7 +37,7 @@ function BecomeEmployee() {
 
  
   useEffect(()=>{
-    axios.get("http://localhost:7000/api/branch/branches")
+    axios.get(`https://salon-sync-solution.onrender.com/api/branch/branches`)
     .then( res=>{
       setBranches(res.data.result);
       console.log(branches)
@@ -65,7 +65,7 @@ console.log("form data",formData);
   }
   else{
     console.log("sendingrequest ")
-    await axios.post('http://localhost:7000/api/admin/request',formData,{
+    await axios.post(`https://salon-sync-solution.onrender.com/api/admin/request`,formData,{
       withCredentials: true,
       headers:{ 'Content-Type': 'multipart/form-data'}
      }

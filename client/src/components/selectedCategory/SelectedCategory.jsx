@@ -15,7 +15,7 @@ function SelectedCategory() {
     const[service,setServices]=useState([]);
     useEffect(()=>{
       
-      axios.get(`http://localhost:7000/api/service/getServicebycategory/${category}`)
+      axios.get(`https://salon-sync-solution.onrender.com/api/service/getServicebycategory/${category}`)
       .then(res=>{
         setServices(res.data.result);
         console.log("service by category",res.data)

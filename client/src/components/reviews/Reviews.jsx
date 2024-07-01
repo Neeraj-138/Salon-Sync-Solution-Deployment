@@ -19,7 +19,7 @@ function Reviews() {
     });
   },[])
     useEffect(()=>{
-      axios.get('http://localhost:7000/api/admin/allreviews')
+      axios.get('https://salon-sync-solution.onrender.com/api/admin/allreviews')
       .then(res=>{
           console.log(res.data)
           setReviews(res.data.result)

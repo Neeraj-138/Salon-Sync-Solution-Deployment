@@ -43,7 +43,7 @@ function Appointment() {
         const branchChoosen=branch.branch.City;
         console.log("selected branch is",branchChoosen)
 
-        axios.get("http://localhost:7000/api/service/getSearchedService",{
+        axios.get(`https://salon-sync-solution.onrender.com/api/service/getSearchedService`,{
             params: {
                 service: serviceSearched,
                 branch: branchChoosen
@@ -67,7 +67,7 @@ function Appointment() {
             console.log("category :",category);
             const branchChoosen=branch.branch.City;
             
-            axios.get("http://localhost:7000/api/service/getSearchedServicebyCategory",{
+            axios.get(`https://salon-sync-solution.onrender.com/api/service/getSearchedServicebyCategory`,{
             params: {
                 Category:category,
                 Branch: branchChoosen
@@ -87,7 +87,7 @@ function Appointment() {
     //  for getting the userDetails
         useEffect(()=>{
             if(userId){
-            axios.get(`http://localhost:7000/api/user/users/${userId}`,{},{ withCredentials: true })
+            axios.get(`https://salon-sync-solution.onrender.com/api/user/users/${userId}`,{},{ withCredentials: true })
             .then(res=>{
                 console.log(res.data.status)
                 // setId(userId);
@@ -177,7 +177,7 @@ function Appointment() {
     // console.log("Price from redux",totalAmount);
         useEffect(()=>{
         try {
-            axios.get(`http://localhost:7000/api/service/service/${branch.branch.bId}`)
+            axios.get(`https://salon-sync-solution.onrender.com/api/service/service/${branch.branch.bId}`)
             .then(res=>{
                 setService(res.data.result);
                 console.log("service from database",res.data.result);
@@ -215,7 +215,7 @@ function Appointment() {
             console.log("form data to submitted",bookingData);
             alert("want to confirm booking")
             if(bookingData.paymentMode==='online'){
-                await axios.post("http://localhost:7000/api/payment/paymentCheckout",{bookingData},{ withCredentials: true})
+                await axios.post("https://salon-sync-solution.onrender.com/api/payment/paymentCheckout",{bookingData},{ withCredentials: true})
                 .then(
                     res=>{
                         console.log("response from checkout id:",res.data.order.id)
@@ -228,7 +228,7 @@ function Appointment() {
                             description: "Test Transaction",
                             image: "https://example.com/your_logo",
                             order_id: res.data.order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-                            callback_url: "http://localhost:7000/api/payment/paymentVerification",
+                            callback_url: `https://salon-sync-solution.onrender.com/api/payment/paymentVerification`,
                             prefill: {
                                 name: "Neeraj",
                                 email: "neerajrn.786@gmail.com",
@@ -257,7 +257,7 @@ function Appointment() {
             else{
                 // send booking data for offline booking option
 
-                axios.post("http://localhost:7000/api/booking/booking",{bookingData},{withCredentials:true})
+                axios.post(`https://salon-sync-solution.onrender.com/api/booking/booking`,{bookingData},{withCredentials:true})
                 .then(res=>{
                     console.log(res.data.result)
                     if(res.data.Status){

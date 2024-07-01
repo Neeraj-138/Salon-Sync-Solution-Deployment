@@ -13,7 +13,7 @@ function OurLocation() {
     },[])
     const [branch,setBranches]=useState([])
     useEffect(()=>{
-        axios.get('http://localhost:7000/api/branch/branches')
+        axios.get(`https://salon-sync-solution.onrender.com/api/branch/branches`)
         .then(
              res=>{
                 console.log("branches",res.data.result);

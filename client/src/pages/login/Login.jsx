@@ -23,7 +23,7 @@ const navigate=useNavigate();
 const handleLogin=(e)=>{
   e.preventDefault();
   console.log("LoginData",value);
-  axios.post("http://localhost:7000/api/auth/login",value,{ withCredentials: true})
+  axios.post(`https://salon-sync-solution.onrender.com/api/auth/login`,value,{ withCredentials: true})
   .then(res=>{
     // if(res)
     console.log("response from the server for login",res.data);

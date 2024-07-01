@@ -40,7 +40,7 @@ function ContactUs() {
         // You can add your form submission logic here, such as sending the form data to a server.
         console.log("form data",formData);
         console.log("customerId",userId);
-        axios.post('http://localhost:7000/api/user/users/contacts',formData)
+        axios.post(`https://salon-sync-solution.onrender.com/api/user/users/contacts`,formData)
         .then(res=>{
           toast.success("Submitted  Successfully")
           console.log(res.data)

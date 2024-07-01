@@ -19,7 +19,7 @@ function MyCancelAppointment() {
 
     console.log("userId",userId);
     useEffect(()=>{
-        axios.get(`http://localhost:7000/api/user/users/mycancelledappointment/${userId}`, {
+        axios.get(`https://salon-sync-solution.onrender.com/api/user/users/mycancelledappointment/${userId}`, {
             // headers: {
             //     "Authorization": `Bearer ${localStorage.getItem('token')}`
             // },

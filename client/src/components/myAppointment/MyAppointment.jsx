@@ -28,7 +28,7 @@ function MyAppointment() {
         if(token===null){
             navigate('/login')
         }
-        axios.get(`http://localhost:7000/api/user/users/myappointment/${userId}`, {
+        axios.get(`https://salon-sync-solution.onrender.com/api/user/users/myappointment/${userId}`, {
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem('token')}`
             },
@@ -51,7 +51,7 @@ function MyAppointment() {
     },[status])
     const handleCancel=(ID)=>{
         console.log("appointemnt id",ID);
-        axios.post(`http://localhost:7000/api/user/users/appointmentcancel/${ID}`)
+        axios.post(`https://salon-sync-solution.onrender.com/api/user/users/appointmentcancel/${ID}`)
         .then(res=>{
             console.log("response",res.data.Status);
             setStatus(!status);

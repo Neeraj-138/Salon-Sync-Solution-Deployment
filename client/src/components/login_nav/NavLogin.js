@@ -26,7 +26,7 @@ const[user,setUser]=useState(
   console.log("customerdetails",FirstName)
 
   if(userId){
-    axios.get(`http://localhost:7000/api/user/users/${userId}`,{},{ withCredentials: true })
+    axios.get(`https://salon-sync-solution.onrender.com/api/user/users/${userId}`,{},{ withCredentials: true })
     .then(
       res=>{
         console.log(res.data.status)
@@ -48,7 +48,7 @@ const[user,setUser]=useState(
     localStorage.removeItem('token');
     localStorage.removeItem('UserId');
     setStatus(false);
-  axios.get("http://localhost:7000/api/auth/logout",{},{ withCredentials: true })
+  axios.get(`https://salon-sync-solution.onrender.com/api/auth/logout`,{},{ withCredentials: true })
   .then(
     res=>{console.log(res)
       setStatus(res.data.Status);
