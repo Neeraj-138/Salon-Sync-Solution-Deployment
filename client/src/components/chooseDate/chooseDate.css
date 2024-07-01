@@ -1,0 +1,36 @@
+.MuiPickersToolbar-root .MuiPickersLayout-toolbar .css-1eurbeq-MuiPickersToolbar-root-MuiDatePickerToolbar-root{
+    display: none;
+}
+.css-3jvy96-MuiTypography-root-MuiDatePickerToolbar-title{
+    display: none;
+}
+.css-1eurbeq-MuiPickersToolbar-root-MuiDatePickerToolbar-root{
+    display: none;
+}
+.css-1eurbeq-MuiPickersToolbar-root-MuiDatePickerToolbar-root{
+    display: none;
+}
+.css-1hbyad5-MuiTypography-root {
+    display: none;
+}
+.css-4pax7l-MuiPickersLayout-root .MuiPickersLayout-toolbar {
+    display: none;
+}
+.date{
+    padding: 0px;
+    background-color: red;
+    max-height: 20px;
+}
+.MuiDayCalendar-monthContainer .css-12p2adl-MuiDayCalendar-monthContainer{
+    background-color: red;
+}
+.css-4pax7l-MuiPickersLayout-root .MuiPickersLayout-actionBar {
+    display: none;
+}
+.css-16b5y55-MuiPickersLayout-contentWrapper {
+    height: 50vh;
+}
+.react-datepicker__day--selected {
+    background-color: #ff2f00; /* Change the background color to blue */
+    color: #fff; /* Change the text color to white */
+}

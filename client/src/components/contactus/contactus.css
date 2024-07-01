@@ -1,0 +1,66 @@
+.contactus{
+    display: flex;
+    justify-content: center;
+    /* margin-top: 80px; */
+    /* padding-top: 80px   ; */
+}
+.SerContainer{
+    padding-top: 80px;
+}
+.headOffice{
+    display: flex;
+    /* flex-direction: column; */
+    flex: 1;
+    justify-content: center;
+    /* background-color: red; */
+}
+
+.contactForm{
+    flex: 1;
+}
+.contactInputcontact{
+    width: 81%;
+    height: 40px;
+    margin-left: 10px;
+    /* background-color: red; */
+    margin-bottom: 15px;
+}
+.contactInputcontact>input{
+    width: 99%;
+    height: 40px;
+}
+.contactInput{
+    display: flex;
+    gap: 5px;
+    height: 45px;
+    margin: 10px;
+    width: 81%;
+}
+.contactInput>input{
+    width:81%;
+    
+}
+.textArea>textarea{
+    width: 81%;
+    height: 100px;
+    margin-left: 11px;
+}
+form button{
+    background-color: red;
+    width: 82%;
+    height: 40px;
+    margin-left:10px ;
+    border: none;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+ form button:hover{
+    /* background-color: #fff; */
+    font-size: 23px;
+}
+.contactForm>h1{
+    margin-left: 10px;
+}

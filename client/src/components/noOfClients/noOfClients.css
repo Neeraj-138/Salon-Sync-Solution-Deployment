@@ -1,0 +1,34 @@
+.NoContainer{
+    box-sizing: border-box;
+    height: 25vh;
+}
+.Norow{
+    height: 25vh;
+    background-color: rgb(88, 88, 88);
+    display: flex;
+    align-items:center;
+    justify-content:;
+    /* margin: 12px; */
+    color: white;
+
+}
+.border{
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+.NoWrapper{
+    font-size: 30px;
+    width: 300px;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin:10px 100px;
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid white;
+
+}
+.NoWrapper .nw{
+    font-size: 15px;
+}

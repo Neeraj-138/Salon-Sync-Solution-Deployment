@@ -1,0 +1,55 @@
+.LocContainer{
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(33, 33, 33);
+}
+.LocWrapper{
+    width: 100%;
+    max-width: 1200px;
+}
+.LocWrapper> h2{
+    color: rgb(171, 171, 171);
+}
+.LocContent{
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+.input{
+    border-radius: 10px;
+    display: flex;
+    height: 30vh;
+    flex-direction: column;
+    flex: 1;
+    background-color: rgb(255, 255, 255);
+}
+.input select{
+    height: 50px;
+    /* border: none; */
+    font-size: 18px;
+}
+.map{
+    display: flex;
+    flex: 3;
+    /* background-color: red; */
+}
+iframe{
+    border-radius: 10px;
+    width: 70vw;
+    height:400px;
+}
+.responsive-map{
+    overflow: hidden;
+    height: 0;
+    position: relative;
+    
+}
+.responsive-map iframe{
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+}

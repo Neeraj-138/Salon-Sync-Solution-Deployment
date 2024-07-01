@@ -1,0 +1,22 @@
+.appointmentList{
+    width: 100%;
+    background-color: rgb(59, 57, 57);
+    display: flex;
+    justify-content: center;
+}
+.appointmentWrapper{
+    background-color: aliceblue;
+    max-width: 1200px;
+    width: 100%;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+
+}
+.cancelbtn{
+    background-color: red;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding:6px 15px;
+}

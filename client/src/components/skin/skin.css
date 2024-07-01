@@ -1,0 +1,97 @@
+.skinContainer{
+
+    background-color: rgb(73, 72, 72);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 80px;
+    /* background-image: url('https://png.pngtree.com/background/20230414/original/pngtree-makeup-skin-care-products-cosmetics-beauty-photography-advertising-background-picture-image_2424108.jpg'); */
+
+}
+.poster{
+    background-image: url('https://png.pngtree.com/background/20230414/original/pngtree-makeup-skin-care-products-cosmetics-beauty-photography-advertising-background-picture-image_2424108.jpg');
+    /* background-image: url('https://th.bing.com/th/id/R.9b545fb1d3c6ef6f2a85782f04670339?rik=x9MAXW1mROgE4w&riu=http%3a%2f%2flakehamiltonpublish.com%2fwp-content%2fuploads%2f2018%2f09%2fhair-salon-banner.jpg&ehk=8ztBf0EzY5L5d2mFOultRzy1RCxLJcegOlXKZrvkiX8%3d&risl=&pid=ImgRaw&r=0'); */
+    /* background-image: url('https://graphicsfamily.com/wp-content/uploads/2020/07/Beauty-Care-facebook-cover-design-scaled.jpg'); */
+    /* background-image: url('https://wallpaperaccess.com/full/2317456.jpg'); */
+    /* background-image: url('https://th.bing.com/th/id/OIP.HfgQ_jYj3itV41bGwEbOVAHaDs?w=303&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7'); */
+    /* background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; */
+    color: white;
+    overflow: auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+.contentSkin{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* background-color: brown; */
+
+    color: rgb(255, 255, 255);
+    align-items: center;
+
+}
+.contentSkin>p{
+    margin-bottom: -10px;
+    margin-top: -5px;
+    /* background-color: aliceblue; */
+    font-size: 15px;
+}
+
+.grid-container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 1200px;
+    grid-template-columns: auto  auto;
+    gap: 10px;
+    /* background-image: url(''); */
+    background-color: rgb(61, 57, 57);
+    padding: 10px;
+  }
+  
+.grid-container > div {
+    /* background-color: rgba(255, 255, 255, 0.8); */
+    border: 1px solid black;
+    width: 45vw;
+    height: 250px;
+    text-align: center;
+    font-size: 30px;
+}
+.content_grid{
+    z-index: 2;
+    padding: 10px;
+    display: flex;
+    background-color: aliceblue;
+}
+.content_grid>p{
+    margin-top: -20px;
+}
+.content>h6{
+    margin-top: -10px;
+    margin-bottom: -1px;
+}
+.content_grid .img>img{
+    width: 250px;
+    height: 250px;
+}
+.content>button{
+    /* margin-top: -20px; */
+    background-color: red;
+    width: 22vw;
+    height: 30px;
+    border: none ;
+    cursor: pointer;
+    color: white;
+}

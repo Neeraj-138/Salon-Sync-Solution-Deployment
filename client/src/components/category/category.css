@@ -1,0 +1,22 @@
+.categoryContainer{
+    background-color: antiquewhite;
+    display: flex;
+}
+.listCategory{
+    width: 200px;
+    padding: 10px;
+    list-style: none;
+    display: flex;
+
+    flex-direction: column;
+}
+.listCategory li{
+    border-bottom: 1px solid gray;
+    /* background-color: red; */
+    margin: 10px;
+}
+.listCategory li:hover{
+    color: red;
+    cursor: pointer;
+    /* background-color: red; */
+}

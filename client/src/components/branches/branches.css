@@ -1,0 +1,53 @@
+.brContainer{
+    /* background-color: red; */
+    width: 100vw;
+    box-sizing: border-box;
+    height: 100vh;
+    background-color: rgb(0,0,0,0.418);
+    display: flex;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    z-index: 800;
+    overflow-y: auto;
+
+}
+.brWrapper{
+    background-color: white;
+    position: relative;
+    padding: 5px;
+    height: 90vh;
+    /* background-color: green; */
+    overflow-y: auto;
+}
+.pleaseSelect{
+    width: 100%;
+    background-color: rgb(187, 187, 187);
+    display: flex;
+    align-items: center;
+    gap: 600px;
+  
+    justify-content: space-between;
+}
+.rClose{
+    cursor: pointer;
+}
+.brList{
+    /* background-color: red; */
+    margin: 0;
+}
+.brCard{
+    padding:   0px  10px;
+    background-color: rgb(233, 231, 231);
+}
+.brCard:hover{
+    background-color: rgb(255, 0, 0);
+}
+.serchInput>input{
+    /* background-color: red; */
+    width: 400px;
+    font-size: 20px;
+    height: 30px;
+}

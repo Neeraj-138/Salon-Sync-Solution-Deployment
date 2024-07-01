@@ -1,0 +1,74 @@
+.sercontainer{
+background-color: rgb(30, 30, 30);
+border-bottom: 2px solid rgb(0, 0, 0);
+
+}
+.serComment{
+    color: white;
+    /* width: 70%; */
+    /* background-color: green; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.serComment>h3{
+    margin-top: -4px;
+    margin-bottom: -2px;
+    font-weight: 500;
+}
+.service{
+    display: flex;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 1200px;
+     justify-content: space-between;
+    gap: 20px;
+}
+.serviceItem{
+    box-shadow: rgba(255, 255, 255, 0.36)0px 1px 4px;
+    background-color: rgb(99, 99, 99);
+    flex: 1;
+    overflow: hidden;
+    transition: transform 0.5s ease;
+  
+    border-radius: 10px ;
+   }
+.serviceImg{
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+.serviceItem:hover{
+    transform: scale(.96);
+}
+.serviceTitle{
+    margin: 20px;
+}
+.serviceTitle>h1{
+    font-size: 18px;
+    color: #f0eeee;
+    text-transform: capitalize;
+}
+
+.serviceTitle>h2{
+    font-size: 14px;
+    font-weight: 500;
+    color: #f0eeee;
+    }
+.heading{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+   
+}
+.items{
+    width: 100%;
+    display: flex;
+    max-width: 1200px;
+    justify-content: space-between;
+}
+.items>h2{
+    color: white;
+}
