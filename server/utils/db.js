@@ -4,13 +4,11 @@ import {config } from "dotenv";
 config();
 const conn= mysql.createConnection(
     {
-        host:process.env.Host,
-        user:process.env.User,
-        password:process.env.Password,
-        database:process.env.Database,
-        port:process.env.Port||3306,
-        connectTimeout: 10000
-        
+        host:process.env.HOST,
+        port:process.env.DB_PORT,
+        user:process.env.MYSQL_USER,
+        password:process.env.MYSQL_PASSWORD,
+        database:process.env.DATABASE,
     }
 )
 conn.connect((err)=>
