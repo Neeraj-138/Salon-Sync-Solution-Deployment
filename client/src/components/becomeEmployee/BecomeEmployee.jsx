@@ -65,7 +65,7 @@ console.log("form data",formData);
   }
   else{
     console.log("sendingrequest ")
-    await axios.post(`https://salon-sync-solution.onrender.com/api/admin/request`,formData,{
+    await axios.post(`salonsyncbackend.vercel.app/api/admin/request`,formData,{
       withCredentials: true,
       headers:{ 'Content-Type': 'multipart/form-data'}
      }
