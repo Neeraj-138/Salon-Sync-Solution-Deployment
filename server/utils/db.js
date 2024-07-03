@@ -2,6 +2,7 @@
 import mysql from 'mysql2'
 import {config } from "dotenv";
 config();
+console.log(process.env)
 const conn= mysql.createConnection(
     {
         host:process.env.HOST,
