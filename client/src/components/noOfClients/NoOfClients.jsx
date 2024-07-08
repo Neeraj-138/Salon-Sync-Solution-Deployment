@@ -25,7 +25,7 @@ function NoOfClients() {
 
     const [therapist,setTherapist] = useState(0);
     useEffect(()=>{
-        axios.get('https://salon-sync-solution.onrender.com/api/branch/branches/therapist')
+        axios.get('https://neerajtest.onrender.com/api/branch/branches/therapist')
         .then(res=>{
             if(!res.data.Status){
                 console.log(res.data.message)
@@ -43,7 +43,7 @@ function NoOfClients() {
 
     const [client,setClient] =useState(0);
     useEffect(()=>{
-        axios.get('https://salon-sync-solution.onrender.com/api/branch/branches/details')
+        axios.get('https://neerajtest.onrender.com/api/branch/branches/details')
         .then(res=>{
             if(!res.data.Status){
                 // setError(res.data.message);
@@ -62,7 +62,7 @@ function NoOfClients() {
     },[])
     const [bookings,setBookings] = useState(0);
     useEffect(()=>{
-        axios.get('https://salon-sync-solution.onrender.com/api/branch/branches/appointment')
+        axios.get('https://neerajtest.onrender.com/api/branch/branches/appointment')
         .then(res=>{
             if(!res.data.Status){
                 console.log(res.data.message)
