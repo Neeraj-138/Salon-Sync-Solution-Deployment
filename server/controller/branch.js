@@ -63,14 +63,14 @@ const getAllBookAppointment = (req,res) =>{
 }
 
 const getAllBranchesTherapist = (req,res)=>{
-    conn.query("select count(*) as Therapist FROM saloon.users where users.Type = 'Employee' or users.Type = 'Manager'",(err,result)=>{
+    conn.query("select count(*) as Therapist FROM users where Type = 'Employee' or Type = 'Manager'",(err,result)=>{
         if(err) return res.json({Status:false,Error:"Query Error"})
         return res.json({Status:true,result:result});
     })
 }
 const gettotalClients=(req,res)=>{
     // console.log("getting");
-    conn.query("select count(*) as Clients FROM saloon.users where users.Type = 'Customer'",(err,result)=>{
+    conn.query("select count(*) as Clients FROM users where Type = 'Customer'",(err,result)=>{
         // return res.json({Status:true});
         if(err) return res.json({Status:false,Error:"Query Error"})
         return res.json({Status:true,result:result});
@@ -79,7 +79,7 @@ const gettotalClients=(req,res)=>{
 }
 const   getTotalRevanue=(req,res)=>{
     
-    conn.query("SELECT	sum(p.Amount) as TotalRevenue	FROM saloon.payments	p	inner	join appointments	ap on	p.AppointmentID=ap.ID	where ap.Status='Booked'",(err,result)=>{        
+    conn.query("SELECT	sum(p.Amount) as TotalRevenue	FROM payments	p	inner	join appointments	ap on	p.AppointmentID=ap.ID	where ap.Status='Booked'",(err,result)=>{        
         if(err) return res.json({Status:false,Error:"Query Error"})
         return res.json({Status:true,result:result});
     })
