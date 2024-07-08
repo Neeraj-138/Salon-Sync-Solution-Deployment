@@ -16,7 +16,7 @@ function Branches({openModel}) {
     console.log(searchBranch);
        const SearchBranchByCity=(searchBranch)=>{
             console.log("clikecd",searchBranch);
-            axios.get(`http://localhost:7000/api/branch/branch/${searchBranch}`)
+            axios.get(`https://neerajtest.onrender.com/api/branch/branch/${searchBranch}`)
             .then( res=>{
                 setBranches(res.data.result)
                 console.log(res)
@@ -33,7 +33,7 @@ function Branches({openModel}) {
     const dispatch=useDispatch();
     const [branches,setBranches]=useState([]);
     useEffect(()=>{
-        axios.get('http://localhost:7000/api/branch/branches')
+        axios.get('https://neerajtest.onrender.com/api/branch/branches')
         .then(
              res=>{
                 setBranches(res.data.result);
