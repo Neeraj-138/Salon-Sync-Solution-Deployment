@@ -23,7 +23,7 @@ function Register() {
     // console.log("registering");
 
     // console.log(value);
-    axios.post(`https://salon-sync-solution.onrender.com/api/auth/register`,value)
+    axios.post(`http://localhost:8000/api/auth/register`,value)
     .then(
       res=>{
         // console.log(res.data.RegisterStatus);

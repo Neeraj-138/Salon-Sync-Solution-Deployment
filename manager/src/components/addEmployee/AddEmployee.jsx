@@ -12,7 +12,7 @@ function UpdateService() {
     })
     const navigate=useNavigate();
     useEffect(()=>{
-        axios.get(`http://localhost:7000/api/service/getService/${id}`)
+        axios.get(`http://localhost:8000/api/service/getService/${id}`)
         .then(res=>{
             console.log(res.data.result);
             setService({

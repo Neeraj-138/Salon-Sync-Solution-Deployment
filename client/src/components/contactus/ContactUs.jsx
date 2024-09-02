@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import NavLogin from '../login_nav/NavLogin'
 import Navbar from '../navbar/Navbar'
 import Footer from '../footer/Footer'
@@ -11,8 +11,32 @@ import { faAddressCard, faLocationDot, faLocationPin, faMobile, faMobileButton, 
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from 'react-router-dom';
 function ContactUs() {
-  const userId=localStorage.getItem('UserId')
+
+  const [userId,setUserId]=useState(null);
+  const navigate=useNavigate()
+  useEffect(()=>{
+    
+    const user=JSON.parse(localStorage.getItem('currentUser'))
+    console.log("user",user)
+
+    if(user===null){
+      toast("Please Login ..")
+      alert("PleaseLogin")
+      navigate('/')
+      
+    }
+    else{
+      setUserId(user.currentUser.UserID)
+    }
+},[])
+
+
+
+  // const user=JSON.parse(localStorage.getItem('currentUser'))
+  // const userId=user.currentUser.UserID
+
   const[customerId,setCustmerId]=useState('');
 
     const [formData, setFormData] = useState({
@@ -40,7 +64,7 @@ function ContactUs() {
         // You can add your form submission logic here, such as sending the form data to a server.
         console.log("form data",formData);
         console.log("customerId",userId);
-        axios.post(`https://salon-sync-solution.onrender.com/api/user/users/contacts`,formData)
+        axios.post(`http://localhost:8000/api/user/users/contacts`,formData,{withCredentials:true})
         .then(res=>{
           toast.success("Submitted  Successfully")
           console.log(res.data)

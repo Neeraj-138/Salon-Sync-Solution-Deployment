@@ -9,9 +9,9 @@ const checkout = async (req, res) => {
       currency: "INR",
     };
     const order = await instance.orders.create(options);
-    console.log(order);
+    // console.log(order);
     bookingDatas=req.body.bookingData
-    console.log("CheckoutApi",bookingDatas)
+    // console.log("CheckoutApi",bookingDatas)
     // if(err) return res.json({Status:false,Error:"Query Error"})
     return res.json({
       Status: true,
@@ -23,18 +23,18 @@ const checkout = async (req, res) => {
 };
 const paymentVerification = (req, res) => {
   try {
-    console.log("header",req.body);
+    // console.log("header",req.body);
     const { razorpay_order_id, razorpay_payment_id, razorpay_signature}=req.body;
-    console.log(razorpay_order_id, razorpay_payment_id,"booking data:",bookingDatas);
+    // console.log(razorpay_order_id, razorpay_payment_id,"booking data:",bookingDatas);
     const body = razorpay_order_id + "|" + razorpay_payment_id;
     const expectedSignature = crypto
       .createHmac("sha256", "3e5bbtJ0DxUCXTYBUb535PpF")
       .update(body.toString())
       .digest("hex");
-    // console.log("sign recieved", razorpay_signature);
-    // console.log("sign generated", expectedSignature);
+    console.log("sign recieved", razorpay_signature);
+    console.log("sign generated", expectedSignature);
     const isAuthentic = razorpay_signature === expectedSignature;
-    // console.log("isAuthentic",isAuthentic);
+    console.log("isAuthentic",isAuthentic);
     if (isAuthentic) {
       //database comes here
         conn.query("SELECT ID FROM customers WHERE UserID=?",[bookingDatas.userId], (err, rows, fields) => {

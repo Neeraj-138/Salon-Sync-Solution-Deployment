@@ -18,7 +18,7 @@
     background-color: white;
     position: relative;
     padding: 5px;
-    height: 90vh;
+    height: 100vh;
     /* background-color: green; */
     overflow-y: auto;
 }
@@ -39,8 +39,10 @@
     margin: 0;
 }
 .brCard{
-    padding:   0px  10px;
-    background-color: rgb(233, 231, 231);
+    padding:   10px  10px;
+    margin: 10px;
+    height: 60px;
+    background-color: rgb(96, 89, 89);
 }
 .brCard:hover{
     background-color: rgb(255, 0, 0);

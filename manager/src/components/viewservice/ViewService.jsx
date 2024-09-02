@@ -11,7 +11,7 @@ function ViewService() {
     const[key,setKey]=useState(false);
 
     useEffect(()=>{
-        axios.get('http://localhost:7000/api/service/getServices')
+        axios.get('http://localhost:8000/api/service/getServices')
         .then( res=>{
             setService(res.data.result)
             console.log("updatedservice",res.data.result);

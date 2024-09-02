@@ -9,7 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 function Employee() {
     const [employee,setEmployee]=useState([]);
     useEffect(()=>{
-        axios.get("http://localhost:7000/api/admin/allemployee")    
+        axios.get("http://localhost:8000/api/admin/allemployee")    
         .then( res=>{
             setEmployee(res.data.result);
             console.log("Employee",res.data.result)
@@ -55,7 +55,7 @@ function Employee() {
                               <td>{e.Phone}</td>
                               <td>{e.BranchID}</td>
                               <td>{e.Verified}</td>
-                              <td><a href={`http://localhost:7000/uploads/${e.resume}`} target="_blank" rel="noopener noreferrer">View Resume</a></td>
+                              <td><a href={`http://localhost:8000/uploads/${e.resume}`} target="_blank" rel="noopener noreferrer">View Resume</a></td>
 
                               <td>
                                 <button className='edit link'><Link className='linkser' to={`/dashboard/updateEmployee/${e.ID}`}>Edit</Link></button>

@@ -13,14 +13,14 @@ function AddService() {
 
   const [branches, setBranches] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:7000/api/branch/branches")
+    axios.get("http://localhost:8000/api/branch/branches")
       .then(res => setBranches(res.data.result))
       .catch(err => console.log(err));
   }, []);
 
   const [categories, setCategories] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:7000/api/service/serviceCategory")
+    axios.get("http://localhost:8000/api/service/serviceCategory")
       .then(res => setCategories(res.data.result))
       .catch(err => console.log(err));
   }, []);
@@ -57,7 +57,7 @@ console.log("selecting: ",finalbranch);
 const handleAddService = (e) => {
   e.preventDefault();
   console.log("add", service, desc, price, link, finalbranch, selectedCategory);
-  axios.post('http://localhost:7000/api/service/addService', { service, desc, price, link, finalbranch, selectedCategory })
+  axios.post('http://localhost:8000/api/service/addService', { service, desc, price, link, finalbranch, selectedCategory })
     .then(res => {
       if(res.data.Status){
         setTimeout(() => {

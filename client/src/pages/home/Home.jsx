@@ -10,7 +10,7 @@ import NoOfClients from '../../components/noOfClients/NoOfClients'
 import WhyChoose from '../../components/whyChoose/WhyChoose'
 import OurLocation from '../../components/ourLocation/OurLocation'
 import { ToastContainer} from "react-toastify";
-import Reviews from '../../components/reviews/Reviews'
+import Testmonial from '../../components/testimonial/Testimonial'
 function Home() {
   return (
     <div className='container'>
@@ -21,7 +21,8 @@ function Home() {
         {/* <TrendingServices/>  */}
         <Service/>
         <WhyChoose/>
-        <Reviews/>
+       
+        <Testmonial/>
         <OurLocation/>
         <Footer/>
       <ToastContainer />

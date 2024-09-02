@@ -8,7 +8,7 @@ import axios from 'axios';
 function Home() {
 const [allBookedAppointment,setAllBookedAppointment]=useState([]);
     useEffect(()=>{
-        axios.get("http://localhost:7000/api/admin/allbookedappointment")
+        axios.get("http://localhost:8000/api/admin/allbookedappointment")
         .then(res=>{
             console.log(res.data.result);
             setAllBookedAppointment(res.data.result);
@@ -45,7 +45,7 @@ const changeCPage=(id)=>{
 
 const [bookings,setBookings] = useState(0);
 useEffect(()=>{
-    axios.get('http://localhost:7000/api/branch/branches/appointment')
+    axios.get('http://localhost:8000/api/branch/branches/appointment')
     .then(res=>{
         if(!res.data.Status){
             console.log(res.data.message)
@@ -62,7 +62,7 @@ useEffect(()=>{
 
 const [totalRevanue,setTotalRevanue] = useState(0);
 useEffect(()=>{
-    axios.get('http://localhost:7000/api/branch/branches/totalRevanue')
+    axios.get('http://localhost:8000/api/branch/branches/totalRevanue')
     .then(res=>{
         if(!res.data.Status){
             console.log(res.data.message)
@@ -80,7 +80,7 @@ useEffect(()=>{
 
     const [cancelBookings,setCancelledBookings] = useState(0);
     useEffect(()=>{
-    axios.get('http://localhost:7000/api/branch/branches/cancelledappointment')
+    axios.get('http://localhost:8000/api/branch/branches/cancelledappointment')
     .then(res=>{
         if(!res.data.Status){
             console.log(res.data.message)
@@ -96,7 +96,7 @@ useEffect(()=>{
     
 const [skinbooked,setSkinBooked] = useState(0);
 useEffect(()=>{
-axios.get('http://localhost:7000/api/branch/branches/skinbookedappointment')
+axios.get('http://localhost:8000/api/branch/branches/skinbookedappointment')
 .then(res=>{
     if(!res.data.Status){
         console.log(res.data.message)
@@ -111,7 +111,7 @@ console.log(err);
     },[])
 const [hairbooked,setHairBooked] = useState(0);
 useEffect(()=>{
-axios.get('http://localhost:7000/api/branch/branches/hairbookedappointment')
+axios.get('http://localhost:8000/api/branch/branches/hairbookedappointment')
 .then(res=>{
     if(!res.data.Status){
         console.log(res.data.message)
@@ -127,7 +127,7 @@ console.log(err);
 
 const [makeupbooked,setMakeupBooked] = useState(0);
 useEffect(()=>{
-axios.get('http://localhost:7000/api/branch/branches/makeupbookedappointment')
+axios.get('http://localhost:8000/api/branch/branches/makeupbookedappointment')
 .then(res=>{
     if(!res.data.Status){
         console.log(res.data.message)
@@ -143,7 +143,7 @@ console.log(err);
 
 const [handandfeetbooked,setHandAndFeetBooked] = useState(0);
 useEffect(()=>{
-axios.get('http://localhost:7000/api/branch/branches/handandfeetbookedappointment')
+axios.get('http://localhost:8000/api/branch/branches/handandfeetbookedappointment')
 .then(res=>{
     if(!res.data.Status){
         console.log(res.data.message)
@@ -252,7 +252,7 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
 
 
             <div className='barchart'>
-                {/* <ResponsiveContainer width="100%" height="100%">
+                <ResponsiveContainer width="100%" height="100%">
                     <BarChart
                     width={500}
                     height={300}
@@ -272,7 +272,7 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
                     <Bar dataKey="Booked" fill="green" activeBar={<Rectangle fill="pink" stroke="blue" />} />
                     <Bar dataKey="Cancelled" fill="red" activeBar={<Rectangle fill="gold" stroke="purple" />} />
                     </BarChart>
-                </ResponsiveContainer> */}
+                </ResponsiveContainer>
                 
                
                 

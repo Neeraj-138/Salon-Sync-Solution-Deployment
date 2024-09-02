@@ -16,7 +16,7 @@ function Branches({openModel}) {
     console.log(searchBranch);
        const SearchBranchByCity=(searchBranch)=>{
             console.log("clikecd",searchBranch);
-            axios.get(`https://neerajtest.onrender.com/api/branch/branch/${searchBranch}`)
+            axios.get(`http://localhost:8000/api/branch/branch/${searchBranch}`)
             .then( res=>{
                 setBranches(res.data.result)
                 console.log(res)
@@ -33,11 +33,20 @@ function Branches({openModel}) {
     const dispatch=useDispatch();
     const [branches,setBranches]=useState([]);
     useEffect(()=>{
-        axios.get('https://neerajtest.onrender.com/api/branch/branches')
+         axios.get('http://localhost:8000/api/branch/branches',{withCredentials:true})
         .then(
-             res=>{
-                setBranches(res.data.result);
-                console.log(res.data.result)
+            res=>{
+                console.log("from backend for branches ",res)
+                if (res.data.Status===true) {
+                    console.log("Branches from response:", res.data);
+
+                    setBranches(res.data.result);
+                } else {
+                    console.log("No data found in response");
+                }
+                // console.log("Branches",res)
+                // setBranches(res.result.rows);
+
                 setLoading(false);
             }
         )
@@ -48,6 +57,7 @@ function Branches({openModel}) {
             }
         )
     },[])
+    console.log("branches new ;",branches)
 const handlebranch=(branch)=>{
         console.log("Branch ",branch)
         dispatch(setBranch( branch));

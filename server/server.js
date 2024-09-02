@@ -9,37 +9,36 @@ import bodyParser  from "body-parser";
 import Razorpay from 'razorpay'
 import paymentRoute from './routes/payment.js'
 import cors from 'cors';
-import fs from 'fs'
 import cookieParser from "cookie-parser";
-// import multer from "multer";
-import path from 'path'
+
 const app=express();
-// app.use(cors({
-//     origin: "http://localhost:3000", // Replace with the actual origin of your React app
-//     credentials: true,
-// }))
 
 
-app.use(bodyParser.json());
-const allowedOrigins = ['salon-sync-solution-deployment.vercel.app', 'http://localhost:3001'];
+const allowedOrigins = ['http://localhost:3000', 'http://localhost:3001'];
+
 
 app.use(cors({
-    origin: allowedOrigins,
+    origin: (origin, callback) => {
+        // Allow requests with no origin (like mobile apps, curl, postman)
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     credentials: true,
 }));
 
-export const instance =new Razorpay({
-    key_id:process.env.KEY_ID,
-    // key_id:'rzp_test_q4hhrH5FZ0PawV',
-    // key_secret:'3e5bbtJ0DxUCXTYBUb535PpF',
-    key_secret:process.env.KEY_SECRET
-})
 app.use(cookieParser());
+app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
-// headers: {
-//     'Content-Type': 'application/json'
-// }
+
+export const instance =new Razorpay({
+    key_id:process.env.KEY_ID,
+    key_secret:process.env.KEY_SECRET
+})
 
 app.get('/',(req,res,next)=>{
     return res.status(200).json({
@@ -54,9 +53,8 @@ app.use('/api/branch',branchRoutes);
 app.use('/api/service',serviceRoutes);
 app.use('/api/booking',bookingRoutes);
 app.use('/api/payment',paymentRoute);
-// app.use('/uploads', express.static(path.join(__dirname,'uploads')));
 const PORT=process.env.BACKEND_PORT||8000;
-app.use('/uploads', express.static('uploads'));
+app.use('/uploads', express.static('uploads')); 
 app.listen(PORT,()=>{
     console.log("Server listening at port ",PORT)
 })

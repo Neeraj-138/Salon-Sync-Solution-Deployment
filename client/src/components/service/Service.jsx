@@ -39,7 +39,7 @@ function Service() {
             </div>
         </div>
         <div className='serComment'>  
-            <h3>Beauty salon are specially designed to give you that inner glow and make you feel beautiful.</h3>     
+            <h3>SalonSync Solution is specially designed to give you that inner glow and make you feel beautiful.</h3>     
             <p>Our runway experts have curated some of the most popular services at Beauty Salon, just for you.
               </p>
         </div>

@@ -19,39 +19,55 @@ function MyAppointment() {
     const [myAppointment,setMyAppointment]=useState([]);
     // const userId = useSelector((state) => state.auth.user.userId);
     const navigate=useNavigate();
-    const token=localStorage.getItem('token');
-    console.log("token",token);
+
+    const [userId,setUserId]=useState(null);
+  
+  useEffect(()=>{
+    const user=JSON.parse(localStorage.getItem('currentUser'))
+    console.log("user",user)
+    if(user===null){
+      alert("PleaseLogin")
+      navigate('/login')
+      
+    }
+    else{
+        setUserId(user.currentUser.UserID)
+    }
+},[])
+    console.log("sending id",userId)
+
+
+    
     const [status,setStatus]=useState(false)
-    const userId=localStorage.getItem('UserId')
+    // const user=JSON.parse(localStorage.getItem('currentUser'))
+    // console.log("customerdetails",user)
+    // const userId=user.currentUser.UserID
     
     useEffect(()=>{
-        if(token===null){
-            navigate('/login')
-        }
-        axios.get(`https://salon-sync-solution.onrender.com/api/user/users/myappointment/${userId}`, {
-            headers: {
-                "Authorization": `Bearer ${localStorage.getItem('token')}`
-            },
-            
-        })
-        .then(res=>{
-            if(!res.data.Status){
-                setError(res.data.message);
-                console.log(res.data.message)
-                setLoading(false)
-            }else{
-            console.log("appointment from backend",res.data.result);
-            setMyAppointment(res.data.result);
-            console.log("my BookedAppointment",myAppointment.length);
-            }})
-        .catch(err=>{
-            console.log(err);
+        console.log("sending id useEffect",userId)
+        if(userId){
+            axios.get(`http://localhost:8000/api/user/users/myappointment/${userId}`, {
+           withCredentials:true
+            })
+            .then(res=>{
+                if(!res.data.Status){
+                    setError(res.data.message);
+                    console.log(res.data.message)
+                    setLoading(false)
+                }else{
+                console.log("appointment from backend",res.data.result);
+                setMyAppointment(res.data.result);
+                console.log("my BookedAppointment",myAppointment.length);
+                }})
+            .catch(err=>{
+                console.log(err);
 
-        })
-    },[status])
+            })
+        }
+    },[status,userId])
     const handleCancel=(ID)=>{
         console.log("appointemnt id",ID);
-        axios.post(`https://salon-sync-solution.onrender.com/api/user/users/appointmentcancel/${ID}`)
+        axios.post(`http://localhost:8000/api/user/users/appointmentcancel/${ID}`)
         .then(res=>{
             console.log("response",res.data.Status);
             setStatus(!status);

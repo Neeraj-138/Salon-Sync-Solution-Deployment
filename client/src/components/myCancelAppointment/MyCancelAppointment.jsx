@@ -15,11 +15,12 @@ function MyCancelAppointment() {
     const[error,setError]=useState("");
     const [myAppointment,setMyAppointment]=useState([]);
     // const userId = useSelector((state) => state.auth.user.userId);
-  const userId=localStorage.getItem('UserId')
-
+    const user=JSON.parse(localStorage.getItem('currentUser'))
+    console.log("customerdetails",user)
+    const userId=user.currentUser.UserID
     console.log("userId",userId);
     useEffect(()=>{
-        axios.get(`https://salon-sync-solution.onrender.com/api/user/users/mycancelledappointment/${userId}`, {
+        axios.get(`http://localhost:8000/api/user/users/mycancelledappointment/${userId}`, {
             // headers: {
             //     "Authorization": `Bearer ${localStorage.getItem('token')}`
             // },
@@ -76,7 +77,7 @@ function MyCancelAppointment() {
                         <th>Status</th>
                         <th>Amount</th>
                         <th>Mode</th>
-                        <th>Actions</th>
+                        {/* <th>Actions</th> */}
                     </tr>
                 </thead>
                 <tbody>
@@ -90,7 +91,7 @@ function MyCancelAppointment() {
                         <td>{appointment.BookingStatus}</td>
                         <td>{"₹ "+appointment.TotalPrice}</td>
                         <td>{appointment.PaymentMode}</td>
-                        <td><button className='cancelbtn' onClick={()=>handleDelete(appointment.AppointmentID)}>Delete</button>    </td>
+                        {/* <td><button className='cancelbtn' onClick={()=>handleDelete(appointment.AppointmentID)}>Delete</button>    </td> */}
                     </tr>
                     ))}
 

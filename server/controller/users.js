@@ -12,15 +12,15 @@ const getUser=(req,res)=>{
 }
 const myappointment=(req,res)=>{
     const id=req.params.id;
-    // console.log("myappointmentID",id)
+    console.log("my appointment",id)
     if(id==="undefined"){
         return res.json({Status:false,Error:"Please Login"})
     }else{
         conn.query(`select ID from customers where UserID=?`,[id],(err,rows)=>{
-            // console.log("id chosed",rows)
+            console.log("id chosed",rows)
             const qu=`select app.ID as AppointmentID,br.Name as BranchName,	br.City as BranchAddress, app.Date as BookingDate,	app.SlotTime as SlotTime,	group_concat(s.Name) as ServiceName,	app.Status as BookingStatus,    p.Amount as TotalPrice, p.PaymentMode    from appointments as app		 join payments p on app.ID=p.AppointmentID		 join appointmentservices appSer on app.ID=appSer.appointmentID  join services s on appSer.ServiceID=s.sId	 join branches br on app.BranchID=br.bId where app.CustomerID=? and Status='Booked' group by app.ID, br.Name,br.City,app.Date ,app.SlotTime ,p.Amount`
             conn.query(qu,[rows[0].ID],(err,rows,fields)=>{
-                // console.log("result",rows)
+                console.log("result",rows)
                 if(err) return res.json({Status:false,Error:"Query Error"})
     
                 return res.json({Status:true ,result:rows});
@@ -68,8 +68,22 @@ const insertContact=(req,res)=>{
         return res.json({Status:true,result:rows});
         })
 }
+const applicationStatus =(req,res)=>{
+    const id=req.params.id;
+    console.log("application status",id)
+    try{
+        conn.query("Select * from employees where UserID=?",[id],(err,rows)=>{
+            if(err) return res.json({Status:false,Error:"Query Error"})
+            console.log("Status",rows)
+            return res.json({Status:true,result:rows});
+        })
+    
+    }catch{
+        console.log(err)
+
+    }
+}
 
 
 
-
-export {getUser,insertContact,myappointment,myCancelledAppointment,appointmentcancel};
+export {applicationStatus,getUser,insertContact,myappointment,myCancelledAppointment,appointmentcancel};

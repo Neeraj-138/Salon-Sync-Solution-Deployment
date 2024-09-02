@@ -22,7 +22,7 @@ function AddBranch() {
         e.preventDefault();
         console.log("Branch",branch);
 
-        axios.post("http://localhost:7000/api/branch/branch",branch)
+        axios.post("http://localhost:8000/api/branch/branch",branch)
         .then(res=>{
             if(res.data.Status)
             {

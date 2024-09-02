@@ -9,7 +9,7 @@ function RequestEmployee() {
     const [employee,setEmployee]=useState([]);
     const[key,setKey]=useState(0);
     useEffect(()=>{
-        axios.get("http://localhost:7000/api/admin/requestemployee")    
+        axios.get("http://localhost:8000/api/admin/requestemployee")    
         .then( res=>{
             setEmployee(res.data.result);
             console.log("Employee",res.data.result)
@@ -23,7 +23,7 @@ function RequestEmployee() {
 
   const handleAccept=(ID)=>{
     console.log("employee",ID)
-    axios.post(`http://localhost:7000/api/admin/acceptrequest/${ID}`)
+    axios.post(`http://localhost:8000/api/admin/acceptrequest/${ID}`)
     .then( 
       res=>{
         if(res.data.Status)
@@ -40,7 +40,7 @@ function RequestEmployee() {
 
   const handleReject=(ID)=>{
     console.log("employee",ID)
-    axios.post(`http://localhost:7000/api/admin/rejectrequest/${ID}`)
+    axios.post(`http://localhost:8000/api/admin/rejectrequest/${ID}`)
     .then( 
       res=>{
         if(res.data.Status)
@@ -94,7 +94,7 @@ function RequestEmployee() {
                               <td>{e.Phone}</td>
                               <td>{e.BranchID}</td>
                               <td>{e.Verified}</td>
-                              <td><a href={`http://localhost:7000/uploads/${e.resume}`} target="_blank" rel="noopener noreferrer">View Resume</a></td>
+                              <td><a href={`http://localhost:8000/uploads/${e.resume}`} target="_blank" rel="noopener noreferrer">View Resume</a></td>
 
                               <td>
                                 <button className='edit link'><Link className='linkser'onClick={()=>handleAccept(e.ID)} >Accept</Link></button>

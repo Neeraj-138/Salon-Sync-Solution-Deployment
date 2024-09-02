@@ -63,8 +63,10 @@ const getAllBookAppointment = (req,res) =>{
 }
 
 const getAllBranchesTherapist = (req,res)=>{
+    console.log("Cookies",req.cookies)
     conn.query("select count(*) as Therapist FROM users where Type = 'Employee' or Type = 'Manager'",(err,result)=>{
         if(err) return res.json({Status:false,Error:"Query Error"})
+        console.log("Branches",result)
         return res.json({Status:true,result:result});
     })
 }

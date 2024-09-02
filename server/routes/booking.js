@@ -3,6 +3,6 @@ import bookAppointment from '../controller/bookAppointment.js';
 import { isAuthenticate, isCustomer } from '../middlewares/authMiddleware.js';
 
 const router=express.Router();
-router.post('/booking',bookAppointment);
+router.post('/booking',isAuthenticate,isCustomer,bookAppointment);
 
 export default router;

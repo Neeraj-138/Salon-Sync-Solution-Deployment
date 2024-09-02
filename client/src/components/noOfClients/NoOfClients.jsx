@@ -25,13 +25,13 @@ function NoOfClients() {
 
     const [therapist,setTherapist] = useState(0);
     useEffect(()=>{
-        axios.get('https://neerajtest.onrender.com/api/branch/branches/therapist')
+        axios.get('http://localhost:8000/api/branch/branches/therapist',{withCredentials:true})
         .then(res=>{
             if(!res.data.Status){
                 console.log(res.data.message)
 
             }else{
-                console.log("Response from backend",res.data.result[0].Therapist);
+                console.log("Response from backend for tharapist",res.data.result[0].Therapist);
                 setTherapist(res.data.result[0].Therapist);
             }   
     })
@@ -43,7 +43,7 @@ function NoOfClients() {
 
     const [client,setClient] =useState(0);
     useEffect(()=>{
-        axios.get('https://neerajtest.onrender.com/api/branch/branches/details')
+        axios.get('http://localhost:8000/api/branch/branches/details')
         .then(res=>{
             if(!res.data.Status){
                 // setError(res.data.message);
@@ -62,7 +62,7 @@ function NoOfClients() {
     },[])
     const [bookings,setBookings] = useState(0);
     useEffect(()=>{
-        axios.get('https://neerajtest.onrender.com/api/branch/branches/appointment')
+        axios.get('http://localhost:8000/api/branch/branches/appointment')
         .then(res=>{
             if(!res.data.Status){
                 console.log(res.data.message)

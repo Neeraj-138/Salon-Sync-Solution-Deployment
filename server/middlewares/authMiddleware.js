@@ -1,23 +1,16 @@
 import jwt from "jsonwebtoken";
 
 const isAuthenticate = (req, res, next) => {
-
-    const token = req.headers.authorization.split(" ")[1];
-    console.log("token", token);
+    const token =req.cookies.token;
+    console.log("token-cookies", req.cookies.token);
 
     if (!token) {
+      console.log("not Token")
         return res.json({
         Status: false,
         message: "Token is not provided in the request body",
         });
     }
-  //  const token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7IkVtYWlsIjoibmVlcmFqcm4uNzg2QGdtYWlsLmNvbSIsIlJvbGwiOiJNYW5hZ2VyIn0sImlhdCI6MTcwOTg3OTY5NCwiZXhwIjoxNzA5ODgzMjk0fQ.V90LrLMi6wXV5-4pvyFpTnix8Sa_mkuUS8RF52bzeGg";
-  // console.log("requested user",req.user);
-  // console.log("token is", token);
-
-  // if (!token) {
-  //     return res.json({ Status: false, message: "Token is not accessible" });
-  // }
 
   try {
     const decode = jwt.verify(token, "jwt_secret_key");
@@ -25,12 +18,13 @@ const isAuthenticate = (req, res, next) => {
     req.user = decode;
     next();
   } catch (error) {
+    console.log("catch Error",error)
     return res.json({ Status: false, message: "Token is invalid" });
   }
 };
 
 const isCustomer = (req, res, next) => {
-    // console.log("is Customer", req.user.Roll);
+    console.log("is Customer", req.user.Roll);
 
     try {
     if (req.user.Roll !=="Customer") {
@@ -39,6 +33,7 @@ const isCustomer = (req, res, next) => {
         message: "protected routes for this role ",
       });
     }
+    console.log("Customer next")
     next();
   } catch (error) {
     return res.json({ Status: false, message: "User roll is not matching" });

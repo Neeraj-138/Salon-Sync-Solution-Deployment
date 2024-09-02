@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { Link, Outlet } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, Outlet, useNavigate } from 'react-router-dom'
 import NavLogin from '../login_nav/NavLogin'
 import Login from '../../pages/login/Login'
 import Navbar from '../navbar/Navbar'
@@ -10,6 +10,10 @@ import  AOS from 'aos';
 import 'aos/dist/aos.css';
 
 function ChooseAppointment() {
+  
+
+
+
   useEffect(()=>{
     AOS.init({
         duration:1500,

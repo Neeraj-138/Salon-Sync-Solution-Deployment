@@ -52,7 +52,7 @@ const register=async(req,res)=>{
 }
 
 const login = async (req, res) => {
-    console.log('req from the body', req.body);
+    console.log('req from the body', req.body);    
     try {
         const { Email, Password } = req.body;
         if (!Email || !Password) {
@@ -81,21 +81,27 @@ const login = async (req, res) => {
             conn.query("select * from customers where UserID=?",[rows[0].UserID],(err,rows)=>{
                 console.log("from customer & user",rows[0],user)
                 // user=rows[0];
+                user=rows[0];
+                
                 console.log("current user",user)
                 if (rows.length > 0)
                 {
                     const token = jwt.sign( payload , "jwt_secret_key", {expiresIn: '1h'});    
-                    res.cookie('mytoken',token, {expires:new Date(Date.now()+3*24*60*60*1000), path: '/', httpOnly: true, sameSite: 'None' })
-                    console.log(token);
-                    res.setHeader('Authorization',`Bearer ${token}`); 
+                    res.cookie('token',token,
+                        {expires:new Date(Date.now()+3*24*60*60*1000), 
+                            path: '/', httpOnly: true })
+                            .send({loginStatus:true,currentUser:user,token:token});
+                    
+                    // console.log(token);
+                    // res.setHeader('Authorization',`Bearer ${token}`); 
                     // console.log(req.headers.Authorization);
-                    return res.json({
-                        loginStatus: true,
-                        token,
-                        Message: "User logged in successfully",
-                        user:user,
-                        customer:rows[0]
-                    });
+                    // return res.json({
+                    //     loginStatus: true,
+                    //     token,
+                    //     Message: "User logged in successfully",
+                    //     user:user,
+                    //     customer:rows[0]
+                    // });
                 } else {
                     return res.json({ loginStatus: false, Error: "Wrong email or password" });
                 }
@@ -109,10 +115,11 @@ const login = async (req, res) => {
     }
 };
 const logout=(req,res)=>{
-    console.log("pressing logout")
-     res.clearCookie("mytoken");
+    console.log("pressing logout",req.cookies.token)
 
-    return res.json({ LogoutStatus: true, Message: "Logout Successfully" });
+    res.clearCookie("token",{
+        secure:true,
+    }).status(200).send({ LogoutStatus: true, Message: "Logout Successfully" });
 }
 
 

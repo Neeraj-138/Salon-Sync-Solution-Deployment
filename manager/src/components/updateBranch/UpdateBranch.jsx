@@ -20,7 +20,7 @@ function UpdateBranch() {
     location:""
 })
   useEffect(()=>{
-    axios.get(`http://localhost:7000/api/branch/branchById/${id}`)
+    axios.get(`http://localhost:8000/api/branch/branchById/${id}`)
     .then(res=>{
       
       setUpdateBranch({
@@ -41,7 +41,7 @@ function UpdateBranch() {
   
   // console.log(updateBranch);
   e.preventDefault()
-  axios.put(`http://localhost:7000/api/branch/updateBranch/${updateBranch.id}`,updateBranch)
+  axios.put(`http://localhost:8000/api/branch/updateBranch/${updateBranch.id}`,updateBranch)
   .then(res=>{
     if(res.data.Status)
     {

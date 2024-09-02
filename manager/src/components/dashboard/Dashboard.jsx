@@ -14,7 +14,7 @@ import NavLogin from '../navLogin/NavLogin';
 function Dashboard() {
     const navigate=useNavigate();
     const handleLogOut=()=>{
-        axios.get("http://localhost:7000/api/auth/logout")
+        axios.get("http://localhost:8000/api/auth/logout")
         .then(
             res=>{
                 navigate('/');

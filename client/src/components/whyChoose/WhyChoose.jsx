@@ -20,7 +20,7 @@ function WhyChoose() {
     <div className='whyContainer' >
         <div className='whyWrapper' >
             <div className='whyChoose'  >                   
-                <h2>Why Choose Natural Beauty Saloon?</h2>
+                <h2>Why Choose SalonSync Solution?</h2>
                <div className='reasons'>
                     <div  className='workinghour' data-aos='zoom-in' data-aos-delay="300"  >
                         <div>
@@ -32,7 +32,7 @@ function WhyChoose() {
                                     <li>WEDNESDAY  10AM-8PM</li>
                                     <li>THURSDAY  10AM-8PM</li>
                                     <li>FRIDAY  10AM-8PM</li>
-                                    <li>SATERDAY  10AM-8PM</li>
+                                    <li>SATURDAY  10AM-8PM</li>
                                 </ul>
                                 <div    className='loginContent'>
                                     <button onClick={handleBook} className='loginContent' >Book Appointment</button>
@@ -42,7 +42,7 @@ function WhyChoose() {
                     </div>
                     <div>
                         <div className='why'    data-aos='zoom-in'>
-                            <h2>Why Choose Us</h2>
+                            <h2>Why Choose SalonSync Solution ?</h2>
                             <h4>In addition there 5 more reasons why people prefer Beauty saloon:    </h4>
                                 
                             <ul>

@@ -12,7 +12,7 @@ function Booking() {
     const [allBookedAppointment,setAllBookedAppointment]=useState([]);
     useEffect(() => {
         if (selectedDate !== '') {
-            axios.get(`http://localhost:7000/api/admin/allbookedappointmentbydate?date=${selectedDate}`)
+            axios.get(`http://localhost:8000/api/admin/allbookedappointmentbydate?date=${selectedDate}`)
                 .then(res => {
                     console.log("AllAppointment byDATE", res.data.result);
                     setAllBookedAppointment(res.data.result);
@@ -21,7 +21,7 @@ function Booking() {
                     console.log(err);
                 });
         } else {
-            axios.get("http://localhost:7000/api/admin/allbookedappointment")
+            axios.get("http://localhost:8000/api/admin/allbookedappointment")
                 .then(res => {
                     console.log("AllAppointment", res.data.result);
                     setAllBookedAppointment(res.data.result);
@@ -33,7 +33,7 @@ function Booking() {
     }, [selectedDate]);
 
     // useEffect(()=>{
-    //     axios.get("http://localhost:7000/api/admin/allbookedappointment")
+    //     axios.get("http://localhost:8000/api/admin/allbookedappointment")
     //     .then(res=>{
     //         console.log("AllAppointment",res.data.result);
     //         setAllBookedAppointment(res.data.result);

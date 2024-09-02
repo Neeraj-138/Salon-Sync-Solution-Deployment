@@ -32,7 +32,34 @@ function Appointment() {
     const branch = useSelector((state) => state.branch);
     const SelectedDate = useSelector((state) => state.branch.selectedDate);
     // const userId = useSelector((state) => state.auth.user.userId);
-    const userId=localStorage.getItem('UserId')
+    // const userId=localStorage.getItem('UserId')
+    const [userId,setUserId]=useState(null);
+    
+  useEffect(()=>{
+    
+    const user=JSON.parse(localStorage.getItem('currentUser'))
+    console.log("user",user)
+
+    if(user===null){
+      toast("Please Login ..")
+      alert("PleaseLogin")
+      navigate('/login')
+      
+    }
+    else{
+        setUserId(user.currentUser.UserID)
+    }
+},[])
+
+
+
+
+
+
+
+
+    // const user=JSON.parse(localStorage.getItem('currentUser'))
+    // const userId=user.currentUser.UserID
 
     const dispatch=useDispatch();
     const [userName,setUser]=useState("");
@@ -43,7 +70,7 @@ function Appointment() {
         const branchChoosen=branch.branch.City;
         console.log("selected branch is",branchChoosen)
 
-        axios.get(`https://salon-sync-solution.onrender.com/api/service/getSearchedService`,{
+        axios.get(`http://localhost:8000/api/service/getSearchedService`,{
             params: {
                 service: serviceSearched,
                 branch: branchChoosen
@@ -67,7 +94,7 @@ function Appointment() {
             console.log("category :",category);
             const branchChoosen=branch.branch.City;
             
-            axios.get(`https://salon-sync-solution.onrender.com/api/service/getSearchedServicebyCategory`,{
+            axios.get(`http://localhost:8000/api/service/getSearchedServicebyCategory`,{
             params: {
                 Category:category,
                 Branch: branchChoosen
@@ -87,7 +114,7 @@ function Appointment() {
     //  for getting the userDetails
         useEffect(()=>{
             if(userId){
-            axios.get(`https://salon-sync-solution.onrender.com/api/user/users/${userId}`,{},{ withCredentials: true })
+            axios.get(`http://localhost:8000/api/user/users/${userId}`,{},{ withCredentials: true })
             .then(res=>{
                 console.log(res.data.status)
                 // setId(userId);
@@ -177,7 +204,7 @@ function Appointment() {
     // console.log("Price from redux",totalAmount);
         useEffect(()=>{
         try {
-            axios.get(`https://salon-sync-solution.onrender.com/api/service/service/${branch.branch.bId}`)
+            axios.get(`http://localhost:8000/api/service/service/${branch.branch.bId}`)
             .then(res=>{
                 setService(res.data.result);
                 console.log("service from database",res.data.result);
@@ -192,7 +219,7 @@ function Appointment() {
     
     // booking handle 
 
-   const handleBookAppointment=async()=>{
+   const handleBookAppointment=()=>{
         const bookingData = {
             userId: userId, // Assuming userId is just a single value; this needs to be part of your payload
             branchId: branch.branch.bId,
@@ -215,10 +242,10 @@ function Appointment() {
             console.log("form data to submitted",bookingData);
             alert("want to confirm booking")
             if(bookingData.paymentMode==='online'){
-                await axios.post("https://salon-sync-solution.onrender.com/api/payment/paymentCheckout",{bookingData},{ withCredentials: true})
+                axios.post("http://localhost:8000/api/payment/paymentCheckout",{bookingData},{ withCredentials: true})
                 .then(
                     res=>{
-                        console.log("response from checkout id:",res.data.order.id)
+                        // console.log("response from checkout id:",res.data.order.id)
                         const options = {
                             key: "rzp_test_q4hhrH5FZ0PawV", // Enter the Key ID generated from the Dashboard
                             amount: totalAmount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
@@ -228,7 +255,7 @@ function Appointment() {
                             description: "Test Transaction",
                             image: "https://example.com/your_logo",
                             order_id: res.data.order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-                            callback_url: `https://salon-sync-solution.onrender.com/api/payment/paymentVerification`,
+                            callback_url: `https://localhost:8000/api/payment/paymentVerification`,
                             prefill: {
                                 name: "Neeraj",
                                 email: "neerajrn.786@gmail.com",
@@ -244,7 +271,7 @@ function Appointment() {
                     
                         var razor = new window.Razorpay(options);
                             razor.open();
-                        
+                            
         
                     }
                 )
@@ -257,10 +284,10 @@ function Appointment() {
             else{
                 // send booking data for offline booking option
 
-                axios.post(`https://salon-sync-solution.onrender.com/api/booking/booking`,{bookingData},{withCredentials:true})
+                axios.post(`http://localhost:8000/api/booking/booking`,{bookingData},{withCredentials:true})
                 .then(res=>{
-                    console.log(res.data.result)
-                    if(res.data.Status){
+                    console.log("response from server", res.data)
+                    if(res.data.status){
                         toast.success("Booked successfully");
                         setTimeout(() => {
                             navigate('/');                            
@@ -272,7 +299,8 @@ function Appointment() {
 
                 })
                 .catch(err=>{
-                    console.log(err)
+                    toast.error(err.response.data.Error)
+                    console.log("Catch offline",err.response.data.Error)
                 })
             }
         }
@@ -372,9 +400,9 @@ function Appointment() {
                         {
                             slots.map(time=>(
                                 <div className='slot'>
-                                <p>{time}</p>
-                                <input type='checkbox' className='ch' onClick={()=>handleSlot(time)} ></input>
-                            </div>
+                                    <p>{time}</p>
+                                    <input type='checkbox' className='ch' onClick={()=>handleSlot(time)} ></input>
+                                </div>
                             ))
                         }
                         </div>

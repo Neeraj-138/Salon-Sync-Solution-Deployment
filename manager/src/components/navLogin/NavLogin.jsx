@@ -22,7 +22,7 @@ const[user,setUser]=useState(
 );
  useEffect(()=>{
 //   if(userId){
-//     axios.get(`http://localhost:7000/api/user/users/${userId}`,{},{ withCredentials: true })
+//     axios.get(`http://localhost:8000/api/user/users/${userId}`,{},{ withCredentials: true })
 //     .then(
 //       res=>{
 //         console.log(res.data.status)
@@ -41,7 +41,7 @@ const[user,setUser]=useState(
  
   const handleLogout=()=>{
     // console.log("clicked")
-  axios.get("http://localhost:7000/api/auth/logout",{},{ withCredentials: true })
+  axios.get("http://localhost:8000/api/auth/logout",{},{ withCredentials: true })
   .then(
     res=>{console.log(res)
       setStatus(res.data.Status);

@@ -21,7 +21,7 @@ function UpdateEmployee() {
 })
 // const [employee,setEmployee]=useState([]);
   useEffect(()=>{
-    axios.get(`http://localhost:7000/api/admin/employee/${id}`)
+    axios.get(`http://localhost:8000/api/admin/employee/${id}`)
     .then(res=>{
         console.log("Employee",res.data.result);
         // setEmployee(res.data.result)

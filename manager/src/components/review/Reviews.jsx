@@ -9,7 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 function Reviews() {
     const[review,setReview]=useState([]);
     useEffect(()=>{
-        axios.get('http://localhost:7000/api/admin/allreviews')
+        axios.get('http://localhost:8000/api/admin/allreviews')
         .then(res=>{
             console.log(res.data)
             setReview(res.data.result)
@@ -18,7 +18,7 @@ function Reviews() {
     },[])
 
     const handleDelete=(id)=>{
-        axios.delete(`http://localhost:7000/api/admin/deletereview/${id}`)
+        axios.delete(`http://localhost:8000/api/admin/deletereview/${id}`)
         .then(res=>
          {  if(res.data.Status){
           setTimeout(() => {

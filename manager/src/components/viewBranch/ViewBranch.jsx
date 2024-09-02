@@ -11,7 +11,7 @@ function Branch() {
   const[key,setKey]=useState(false);
 
   useEffect(()=>{
-    axios.get("http://localhost:7000/api/branch/branches")
+    axios.get("http://localhost:8000/api/branch/branches")
     .then(res=>
       setBranch(res.data.result)
     ).catch(err=>{
@@ -21,7 +21,7 @@ function Branch() {
   console.log(branch);
   const handleDelete=(bId)=>{
     console.log("deleteing",bId);
-    axios.delete(`http://localhost:7000/api/branch/deletebranch/${bId}`)
+    axios.delete(`http://localhost:8000/api/branch/deletebranch/${bId}`)
     .then(res=>{
         setKey(!key)
         setTimeout(() => {

@@ -7,7 +7,7 @@ function Contact() {
     const [key, setKey] = useState(0)
     const [contact,setContact]=useState([]);
     useEffect(()=>{
-        axios.get("http://localhost:7000/api/admin/allcontacts")
+        axios.get("http://localhost:8000/api/admin/allcontacts")
         .then(res=>{
             console.log("AllContacts",res.data.result);
             setContact(res.data.result);

@@ -18,7 +18,7 @@ function UpdateService() {
 
   const [branches, setBranches] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:7000/api/branch/branches")
+    axios.get("http://localhost:8000/api/branch/branches")
       .then(res => setBranches(res.data.result))
       .catch(err => console.log(err));
   }, []);
@@ -26,7 +26,7 @@ function UpdateService() {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:7000/api/service/serviceCategory")
+    axios.get("http://localhost:8000/api/service/serviceCategory")
       .then(res => setCategories(res.data.result))
       .catch(err => console.log(err));
   }, []);
@@ -41,7 +41,7 @@ function UpdateService() {
 }) 
 
   useEffect(() => {
-    axios.get(`http://localhost:7000/api/service/getService/${id}`)
+    axios.get(`http://localhost:8000/api/service/getService/${id}`)
       .then(res => 
         {   console.log("serviceDetail",res.data.result[0])
             setUpdateService({
@@ -74,7 +74,7 @@ function UpdateService() {
   const handleUpdateService = (e) => {
     e.preventDefault();
     // console.log("add", service, desc, price, link, selectedBranch, selectedCategory);
-    axios.put(`http://localhost:7000/api/service/updateService`, {finalbranch, updateService,selectedCategory })
+    axios.put(`http://localhost:8000/api/service/updateService`, {finalbranch, updateService,selectedCategory })
       .then(res => {
         if(res.data.Status)
         {      setTimeout(() => {
@@ -90,7 +90,7 @@ function UpdateService() {
 
   useEffect(()=>{
     // to get selected branch for a serivce
-    axios.get(`http://localhost:7000/api/service/getSelectedBranchesForService/${id}`)
+    axios.get(`http://localhost:8000/api/service/getSelectedBranchesForService/${id}`)
     .then(res =>
     {  console.log(res.data.result) 
       // setCategories(res.data.result)

@@ -17,7 +17,7 @@ function AddReviews() {
  const handleAddReview=(e)=>{
   console.log(review,designation,customer);
   e.preventDefault();
-    axios.post('http://localhost:7000/api/admin/addreview',{link,review,designation,customer})
+    axios.post('http://localhost:8000/api/admin/addreview',{link,review,designation,customer})
     .then(res=>{
       setTimeout(() => {
         toast.success("Updated successfully")      

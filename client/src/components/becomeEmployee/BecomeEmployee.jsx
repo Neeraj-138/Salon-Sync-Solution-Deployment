@@ -13,6 +13,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 import  AOS from 'aos';
 import 'aos/dist/aos.css';
+import Status from '../applicationStatus/Status'
+import { useNavigate } from 'react-router-dom'
 function BecomeEmployee() {
   useEffect(()=>{
     AOS.init({
@@ -24,20 +26,33 @@ function BecomeEmployee() {
   const [result,setResult]=useState("");
   const [selectedBranchId, setSelectedBranch] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
- 
+  const [CustomerID,setCustmerId]=useState(null);
   
-  // const CustomerID = useSelector((state) => state.auth.user.userId); 
-  const CustomerID=localStorage.getItem('UserId')
+  useEffect(()=>{
+    
+    const user=JSON.parse(localStorage.getItem('currentUser'))
+    console.log("user",user)
 
-  console.log(useId); 
-
+    if(user===null){
+      toast("Please Login ..")
+      // alert("PleaseLogin")
+      navigate('/')
+      
+    }
+    else{
+    setCustmerId(user.currentUser.UserID)
+    }
+},[])
+  
+  const navigate=useNavigate()
+ 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
   };
 
  
   useEffect(()=>{
-    axios.get(`https://salon-sync-solution.onrender.com/api/branch/branches`)
+    axios.get(`http://localhost:8000/api/branch/branches`)
     .then( res=>{
       setBranches(res.data.result);
       console.log(branches)
@@ -57,15 +72,13 @@ const handleRequest=async()=>{
 console.log("form data",formData);
   if(formData.branchId===undefined||selectedFile===undefined)
   {
-    // toast.success("Login successfully")
-    // alert("Please fill  all field")
     toast.error("Please fill  all field ", {     
       autoClose: 2000,
      });
   }
   else{
     console.log("sendingrequest ")
-    await axios.post(`salonsyncbackend.vercel.app/api/admin/request`,formData,{
+    await axios.post(`http://localhost:8000/api/user/request`,formData,{
       withCredentials: true,
       headers:{ 'Content-Type': 'multipart/form-data'}
      }
@@ -99,7 +112,10 @@ console.log("form data",formData);
     <div>
         <NavLogin/>
         <Navbar/>
+         
+
         <div className='beEmployeeContainer'>
+        
         {
           result&&result
         }
@@ -124,7 +140,16 @@ console.log("form data",formData);
               </div>
             </div>
         </div>
-
+        <div className='beWrapper'>
+          <div className='status'>
+              <h2>Your Application Status :</h2>
+            <div className='statusCard'>
+              <Status/>
+              
+            </div>
+              
+          </div>
+        </div>
 
         <Footer/>
         <ToastContainer />

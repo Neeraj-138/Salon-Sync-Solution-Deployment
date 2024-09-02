@@ -23,18 +23,18 @@ const navigate=useNavigate();
 const handleLogin=(e)=>{
   e.preventDefault();
   console.log("LoginData",value);
-  axios.post(`https://salon-sync-solution.onrender.com/api/auth/login`,value,{ withCredentials: true})
+  axios.post(`http://localhost:8000/api/auth/login`,value,{ withCredentials: true})
   .then(res=>{
     // if(res)
     console.log("response from the server for login",res.data);
-    localStorage.setItem('token',res.data.token);
-    localStorage.setItem('FirstName',res.data.customer.FirstName);
-    localStorage.setItem('LastName',res.data.customer.LastName);
-    localStorage.setItem('UserId',res.data.customer.UserID);
+    localStorage.setItem('currentUser',JSON.stringify(res.data));
+    // localStorage.setItem('FirstName',res.data.customer.FirstName);
+    // localStorage.setItem('LastName',res.data.customer.LastName);
+    // localStorage.setItem('UserId',res.data.customer.UserID);
     if(res.data.loginStatus)
     {
-      console.log("Email:", res.data.user.UserID )
-      dispatch(loginSuccess({ data: res.data.user, userId:res.data.user.UserID}));
+      console.log("Email:", res.data )
+      // dispatch(loginSuccess({ data: res.data.user, userId:res.data.user.UserID}));
       
 
      setTimeout(() => {

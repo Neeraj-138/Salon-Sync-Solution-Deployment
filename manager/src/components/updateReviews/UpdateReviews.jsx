@@ -15,7 +15,7 @@ function UpdateReviews() {
       Review:"",
        })
     useEffect(()=>{
-      axios.get(`http://localhost:7000/api/admin/getreview/${id}`)
+      axios.get(`http://localhost:8000/api/admin/getreview/${id}`)
       .then(res=>{
             console.log(res.data.result)
 
