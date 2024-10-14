@@ -15,7 +15,7 @@ function Branches({openModel}) {
   let [loading, setLoading] = useState(true);
     console.log(searchBranch);
        const SearchBranchByCity=(searchBranch)=>{
-            console.log("clikecd",searchBranch);
+            // console.log("clikecd",searchBranch);
             axios.get(`http://localhost:8000/api/branch/branch/${searchBranch}`)
             .then( res=>{
                 setBranches(res.data.result)

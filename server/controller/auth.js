@@ -92,8 +92,7 @@ const login = async (req, res) => {
                             path: '/', httpOnly: true })
                             .send({loginStatus:true,currentUser:user,token:token});
                     
-                    // console.log(token);
-                    // res.setHeader('Authorization',`Bearer ${token}`); 
+                     // res.setHeader('Authorization',`Bearer ${token}`); 
                     // console.log(req.headers.Authorization);
                     // return res.json({
                     //     loginStatus: true,
@@ -101,7 +100,8 @@ const login = async (req, res) => {
                     //     Message: "User logged in successfully",
                     //     user:user,
                     //     customer:rows[0]
-                    // });
+                    // }); // console.log(token);
+                  
                 } else {
                     return res.json({ loginStatus: false, Error: "Wrong email or password" });
                 }

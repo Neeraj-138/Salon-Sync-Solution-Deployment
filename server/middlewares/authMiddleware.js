@@ -2,10 +2,10 @@ import jwt from "jsonwebtoken";
 
 const isAuthenticate = (req, res, next) => {
     const token =req.cookies.token;
-    console.log("token-cookies", req.cookies.token);
+    // console.log("token-cookies", req.cookies.token);
 
     if (!token) {
-      console.log("not Token")
+      // console.log("not Token")
         return res.json({
         Status: false,
         message: "Token is not provided in the request body",
@@ -14,7 +14,7 @@ const isAuthenticate = (req, res, next) => {
 
   try {
     const decode = jwt.verify(token, "jwt_secret_key");
-    console.log("user Information", decode);
+    // console.log("user Information", decode);
     req.user = decode;
     next();
   } catch (error) {
